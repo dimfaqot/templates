@@ -99,6 +99,15 @@
             });
 
         });
+
+        $(document).on('click', '.copy_text', function(e) {
+            e.preventDefault();
+            let text = $(this).data('text');
+
+            navigator.clipboard.writeText(text);
+            popup.message("200", "Copy text sukses.");
+
+        });
         async function post(url = '', data = {}) {
             const response = await fetch("<?= base_url(); ?>" + url, {
                 method: 'POST',

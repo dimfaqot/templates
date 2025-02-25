@@ -25,29 +25,21 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">First</th>
+                <th scope="col">Link</th>
                 <th scope="col">Last</th>
                 <th scope="col">Handle</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
+        <tbody class="tabel_search">
+            <?php foreach ($data as $k => $i): ?>
+                <tr>
+                    <th><?= $k + 1; ?></th>
+                    <td><?= $i['nama']; ?></td>
+                    <td><?= $i['role']; ?></td>
+                    <td><a role="button" class="copy_text" data-text="<?= $i['link']; ?>" href=""><i class="fa-solid fa-link"></i> Link</a></td>
+                    <td><a href="" role="button" class="text-danger fs-6 btn_confirm btn_confirm_<?= $i['id']; ?>" data-tabel="<?= menu()['tabel']; ?>" data-id="<?= $i['id']; ?>"><i class="fa-solid fa-trash-can"></i></a> <a role="button" class="text-warning fs-6 btn_update" data-id="<?= $i['id']; ?>" href=""><i class="fa-solid fa-square-pen"></i></a></td>
+                </tr>
+            <?php endforeach; ?>
         </tbody>
     </table>
 

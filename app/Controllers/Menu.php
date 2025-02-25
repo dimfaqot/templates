@@ -7,11 +7,13 @@ class Menu extends BaseController
     function __construct()
     {
         helper('functions');
-        if (!user()) {
+        if (!session('id')) {
             gagal(base_url(), "Kamu belum login!.");
+            die;
         }
         menu();
     }
+
 
     public function index(): string
     {

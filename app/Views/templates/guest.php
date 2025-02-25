@@ -53,7 +53,6 @@
         // let myModal = document.getElementById("fullscreen");
         // let modal = bootstrap.Modal.getOrCreateInstance(myModal);
         // modal.show();
-
         // Mendefinisikan kelas
         class Modal {
             // Konstruktor untuk menginisialisasi properti
@@ -112,7 +111,7 @@
                     html += `data-${e.key}="${e.value}"`;
                 });
 
-                html += ` class="btn btn-sm btn-success"><i class="fa-solid fa-circle-check"></i></button>
+                html += ` class="btn btn-sm btn-success btn_delete"><i class="fa-solid fa-circle-check"></i></button>
                                         <button class="btn btn-sm btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-ban"></i></button>
                                     </div>
                                 </div>
@@ -157,36 +156,6 @@
         const popup_confirm = new Modal("confirm");
 
         // Menampilkan pesan sukses dan memanggil metode execute
-
-
-        function getDataAttr(selector) {
-            // Mengambil semua elemen dengan selector kelas yang diberikan
-            const elements = document.querySelectorAll("." + selector);
-            const result = [];
-            // Iterasi melalui setiap elemen yang ditemukan
-            elements.forEach((element) => {
-                const dataAttributes = {};
-
-                // Mendapatkan semua atribut elemen
-                for (let attr of element.attributes) {
-                    // Memeriksa apakah atribut dimulai dengan "data-"
-                    if (attr.name.startsWith("data-")) {
-                        const key = attr.name.slice(5); // Menghapus "data-" dari nama atribut
-                        const value = attr.value; // Mengambil nilai atribut
-                        // dataAttributes[key] = value;
-                        result.push({
-                            key,
-                            value
-                        });
-                    }
-                }
-
-                // Menyimpan objek dataAttributes ke dalam array hasil
-                // result.push(dataAttributes);
-            });
-
-            return result;
-        }
 
 
         <?php if (session()->getFlashdata('gagal')) : ?>

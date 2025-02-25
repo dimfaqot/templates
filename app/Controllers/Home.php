@@ -4,14 +4,20 @@ namespace App\Controllers;
 
 class Home extends BaseController
 {
+
     function __construct()
     {
         helper('functions');
-        if (!user()) {
+        if (!session('id')) {
             gagal(base_url(), "Kamu belum login!.");
+            die;
         }
-        menu();
+        if (url() !== 'logout') {
+            menu();
+        }
     }
+
+
 
     public function index(): string
     {
@@ -36,5 +42,12 @@ class Home extends BaseController
         } else {
             sukses_js("Delete data gagal!.");
         }
+    }
+
+    public function logout()
+    {
+        session()->remove('id');
+
+        sukses(base_url(), 'Logout sukses!.');
     }
 }

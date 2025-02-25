@@ -11,12 +11,11 @@ use Endroid\QrCode\Writer\PngWriter;
 function user()
 {
     $db = db('user');
-    $q = $db->where('id', 1)->get()->getRowArray();
+    $q = $db->where('id', session('id'))->get()->getRowArray();
     return $q;
 }
 function menus($order = null)
 {
-
     $db = db('menu');
     $menu = [];
 
@@ -64,6 +63,7 @@ function menus($order = null)
 
 function menu($req = null)
 {
+
     $res = [];
     if (user()) {
         if ($req == null) {

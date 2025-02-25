@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-class Options extends BaseController
+class User extends BaseController
 {
     function __construct()
     {
@@ -19,23 +19,29 @@ class Options extends BaseController
 
         $db = db(menu()['tabel']);
 
-        $data = $db->orderBy('grup', 'ASC')->orderBy('value', 'ASC')->get()->getResultArray();
+        $q = $db->orderBy('role', 'ASC')->orderBy('nama', 'ASC')->get()->getResultArray();
+        $data = [];
+
+        foreach ($q as $i) {
+            $i['link'] = base_url('auth/') . encode_jwt(['id' => $i['id']]);
+            $data[] = $i;
+        }
         return view(menu()['controller'], ['judul' => menu()['menu'], 'data' => $data]);
     }
 
     public function add()
     {
-        $grup = clear(upper_first($this->request->getVar('grup')));
-        $value = clear(upper_first($this->request->getVar('value')));
+        $nama = clear(upper_first($this->request->getVar('nama')));
+        $role = clear(upper_first($this->request->getVar('role')));
 
         $db = db(menu()['tabel']);
-        if ($db->where('grup', $grup)->where('value', $value)->get()->getRowArray()) {
+        if ($db->where('nama', $nama)->where('role', $role)->get()->getRowArray()) {
             gagal(base_url(menu()['controller']), "Data sudah ada!.");
         }
 
         $data = [
-            'grup' => $grup,
-            'value' => $value
+            'nama' => $nama,
+            'role' => $role
         ];
 
         if ($db->insert($data)) {
@@ -47,8 +53,8 @@ class Options extends BaseController
     public function update()
     {
         $id = clear($this->request->getVar('id'));
-        $grup = clear(upper_first($this->request->getVar('grup')));
-        $value = clear(upper_first($this->request->getVar('value')));
+        $nama = clear(upper_first($this->request->getVar('nama')));
+        $role = clear(upper_first($this->request->getVar('role')));
 
         $db = db(menu()['tabel']);
         $q = $db->where('id', $id)->get()->getRowArray();
@@ -57,13 +63,13 @@ class Options extends BaseController
             gagal(base_url(menu()['controller']), "Id tidak ditemukan!.");
         }
 
-        if ($db->whereNotIn('id', [$id])->where('grup', $grup)->where('value', $value)->get()->getRowArray()) {
+        if ($db->whereNotIn('id', [$id])->where('nama', $nama)->where('role', $role)->get()->getRowArray()) {
             gagal(base_url(menu()['controller']), "Data sudah ada!.");
         }
 
 
-        $q['grup'] = $grup;
-        $q['value'] = $value;
+        $q['nama'] = $nama;
+        $q['role'] = $role;
 
         $db->where('id', $id);
         if ($db->update($q)) {

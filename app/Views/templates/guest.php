@@ -6,6 +6,7 @@
     <title><?= $judul; ?></title>
     <meta name="description" content="The small framework with powerful features">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="<?= base_url('logo.png'); ?>" sizes="16x16">
 
     <link href="<?= base_url(); ?>fontawesome/css/all.css" rel="stylesheet">
     <script src="<?= base_url(); ?>jquery.js"></script>

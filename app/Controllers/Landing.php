@@ -16,7 +16,7 @@ class Landing extends BaseController
         return view('landing', ['judul' => "Landing"]);
     }
 
-    //http://localhost:8080/auth/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIifQ.0j1A8pUbNsrCk7gW4pqwkFCEfmD46JEiV5ooXzM2hLk
+    //http://localhost:8080/auth/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.2xnEwWnhfHBRO0_BPAhrRz0SEyE1erLGFFAJ9w-HQcs
     public function auth($jwt)
     {
         $decode = decode_jwt($jwt);

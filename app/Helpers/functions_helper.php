@@ -366,3 +366,43 @@ function options($order)
 
     return $q;
 }
+
+function csv_to_array($file = "katalog.csv")
+{
+    $file = fopen($file, 'r');
+    $data = [];
+    while (($line = fgetcsv($file)) !== FALSE) {
+        //$line is an array of the csv elements
+        $data[] = $line;
+    }
+    fclose($file);
+
+    return $data;
+
+
+    // proses selanjutnya
+    // $data = csv_to_array();
+    // $val = [];
+
+    // foreach ($data as $k => $i) {
+    //     if ($k > 4 && $k < 164) {
+    //         $exp = explode(";", $i[0]);
+    //         $val[] = ['no' => ((array_key_exists(0, $exp) ? $exp[0] : "")), 'barang' => (array_key_exists(1, $exp) ? $exp[1] : ""), 'qty' => (array_key_exists(2, $exp) ? $exp[2] : ""), 'satuan' => (array_key_exists(3, $exp) ? $exp[3] : ""), 'beli' => (array_key_exists(4, $exp) ? $exp[4] : ""), 'jual' => (array_key_exists(5, $exp) ? $exp[5] : "")];
+    //     }
+    // }
+    // $db = db('barang');
+    // foreach ($val as $i) {
+
+    //     $data = [
+    //         'barang' => $i['barang'],
+    //         'qty' => $i['qty'],
+    //         'satuan' => $i['satuan'],
+    //         'beli' => $i['beli'],
+    //         'jual' => $i['jual'],
+    //         'updated_at' => time(),
+    //         'petugas' => user()['nama'],
+    //     ];
+
+    //     $db->insert($data);
+    // }
+}

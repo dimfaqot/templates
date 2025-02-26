@@ -157,7 +157,6 @@
 
         // Menampilkan pesan sukses dan memanggil metode execute
 
-
         <?php if (session()->getFlashdata('gagal')) : ?>
             let msg = "<?= session()->getFlashdata('gagal'); ?>";
             popup.message("400", msg);

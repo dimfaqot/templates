@@ -35,15 +35,15 @@ class StartWebSocket extends BaseCommand
 
         // Konfigurasi untuk WSS (menggunakan SecureServer yang membungkus SocketServer)
 
-        $certificatePath = __DIR__ . '/certs/private.crt';
-        $privateKeyPath = __DIR__ . '/certs/private.key';
+        // $certificatePath = __DIR__ . '/certs/private.crt';
+        // $privateKeyPath = __DIR__ . '/certs/private.key';
 
         $secureServer = new SecureServer(
             $tcpServer, // Menggunakan instance SocketServer yang sudah dibuat
             $loop,
             [
-                'local_cert' => $certificatePath,
-                'local_pk' => $privateKeyPath,
+                'local_cert' => '/home/u1733924/ssl/www_templates_walisongosragen_com_bc33e_98a23_1753550268_d8da8c32c3d6984c310b45bd42176f93.crt', // GANTI DENGAN PATH SEBENARNYA
+                'local_pk' => '/home/u1733924/ssl/miftah/templates.key',     // GANTI DENGAN PATH SEBENARNYA
                 // 'passphrase' => 'jika_private_key_memiliki_passphrase', // HAPUS JIKA TIDAK ADA
                 'allow_self_signed' => true, // HANYA UNTUK PENGEMBANGAN, JANGAN GUNAKAN DI PRODUKSI
             ]

@@ -29,3 +29,8 @@ $routes->post('/options/update', 'Options::update');
 $routes->get('/user', 'User::index');
 $routes->post('/user/add', 'User::add');
 $routes->post('/user/update', 'User::update');
+
+$routes->get('chat', 'ChatController::index');
+$routes->get('king', 'ChatController::king');
+$routes->post('chat/sendMessage', 'ChatController::sendMessage');
+$routes->get('chat/getMessages', 'ChatController::getMessages');

@@ -60,7 +60,7 @@ class StartWebSocket extends BaseCommand
             $tcpServer, // Menggunakan instance SocketServer yang sudah dibuat
             $loop,
             [
-                'local_cert' => $combinedCertificatePath, // GANTI DENGAN PATH SEBENARNYA
+                'local_cert' => $certificatePath, // GANTI DENGAN PATH SEBENARNYA
                 'local_pk' => $privateKeyPath,     // GANTI DENGAN PATH SEBENARNYA
                 // 'passphrase' => 'jika_private_key_memiliki_passphrase', // HAPUS JIKA TIDAK ADA
                 'allow_self_signed' => false, // HANYA UNTUK PENGEMBANGAN, JANGAN GUNAKAN DI PRODUKSI

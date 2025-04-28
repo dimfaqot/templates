@@ -22,7 +22,7 @@ class StartWebSocket extends BaseCommand
 
     public function run(array $params = [])
     {
-        $port = 8080; // Atau port lain yang Anda inginkan
+        $port = 8081; // Atau port lain yang Anda inginkan
         $host = '0.0.0.0';
         $uri = 'tcp://' . $host . ':' . $port; // URI untuk SocketServer
 

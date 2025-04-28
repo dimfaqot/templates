@@ -62,7 +62,7 @@ class StartWebSocket extends BaseCommand
                 'local_cert' => $certificatePath, // GANTI DENGAN PATH SEBENARNYA
                 'local_pk' => $privateKeyPath,     // GANTI DENGAN PATH SEBENARNYA
                 // 'passphrase' => 'jika_private_key_memiliki_passphrase', // HAPUS JIKA TIDAK ADA
-                'allow_self_signed' => true, // HANYA UNTUK PENGEMBANGAN, JANGAN GUNAKAN DI PRODUKSI
+                'allow_self_signed' => false, // HANYA UNTUK PENGEMBANGAN, JANGAN GUNAKAN DI PRODUKSI
             ]
         );
 

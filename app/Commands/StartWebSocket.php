@@ -22,9 +22,6 @@ class StartWebSocket extends BaseCommand
 
     public function run(array $params = [])
     {
-        if (file_exists('/home/u1733924/ssl/certs/www_templates_walisongosragen_com_bc33e_98a23_1753550268_d8da8c32c3d6984c310b45bd42176f93.crt')) {
-            dd(file_get_contents('/home/u1733924/ssl/certs/www_templates_walisongosragen_com_bc33e_98a23_1753550268_d8da8c32c3d6984c310b45bd42176f93.crt'));
-        }
         $port = 8080; // Atau port lain yang Anda inginkan
         $host = '0.0.0.0';
         $uri = 'tcp://' . $host . ':' . $port; // URI untuk SocketServer
@@ -35,7 +32,24 @@ class StartWebSocket extends BaseCommand
 
         // Membuat SocketServer untuk mendengarkan koneksi TCP biasa
         $tcpServer = new SocketServer($uri, [], $loop); // Memberikan URI, konteks kosong, dan loop
+        $certificatePath = '/home/u1733924/ssl/certs/www_templates_walisongosragen_com_bc33e_98a23_1753550268_d8da8c32c3d6984c310b45bd42176f93.crt';
+        $privateKeyPath = '/home/u1733924/ssl/keys/bc33e_98a23_aee55c81a8807a2308fe868a1b19e76b.key';
 
+        CLI::write("Memeriksa file sertifikat: " . $certificatePath);
+        if (!file_exists($certificatePath)) {
+            CLI::error("File sertifikat TIDAK ditemukan.");
+            return;
+        } else {
+            CLI::write("File sertifikat ditemukan.", 'green');
+        }
+
+        CLI::write("Memeriksa file private key: " . $privateKeyPath);
+        if (!file_exists($privateKeyPath)) {
+            CLI::error("File private key TIDAK ditemukan.");
+            return;
+        } else {
+            CLI::write("File private key ditemukan.", 'green');
+        }
         // Konfigurasi untuk WSS (menggunakan SecureServer yang membungkus SocketServer)
 
         // $certificatePath = __DIR__ . '/certs/private.crt';

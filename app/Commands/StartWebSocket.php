@@ -42,8 +42,8 @@ class StartWebSocket extends BaseCommand
             $tcpServer, // Menggunakan instance SocketServer yang sudah dibuat
             $loop,
             [
-                'local_cert' => '../../../../ssl/certs//www_templates_walisongosragen_com_bc33e_98a23_1753550268_d8da8c32c3d6984c310b45bd42176f93.crt', // GANTI DENGAN PATH SEBENARNYA
-                'local_pk' => '../../../../ssl/keys/bc33e_98a23_aee55c81a8807a2308fe868a1b19e76b.key',     // GANTI DENGAN PATH SEBENARNYA
+                'local_cert' => '/home/u1733924/ssl/certs/www_templates_walisongosragen_com_bc33e_98a23_1753550268_d8da8c32c3d6984c310b45bd42176f93.crt',
+                'local_pk' => '/home/u1733924/ssl/keys/bc33e_98a23_aee55c81a8807a2308fe868a1b19e76b.key',
                 // 'passphrase' => 'jika_private_key_memiliki_passphrase', // HAPUS JIKA TIDAK ADA
                 'allow_self_signed' => true, // HANYA UNTUK PENGEMBANGAN, JANGAN GUNAKAN DI PRODUKSI
             ]

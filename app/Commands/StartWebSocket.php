@@ -33,6 +33,7 @@ class StartWebSocket extends BaseCommand
         // Membuat SocketServer untuk mendengarkan koneksi TCP biasa
         $tcpServer = new SocketServer($uri, [], $loop); // Memberikan URI, konteks kosong, dan loop
         $certificatePath = '/home/u1733924/ssl/certs/www_templates_walisongosragen_com_bc33e_98a23_1753550268_d8da8c32c3d6984c310b45bd42176f93.crt';
+        $combinedCertificatePath = '/home/u1733924/ssl/miftah/combined.crt';
         $privateKeyPath = '/home/u1733924/ssl/keys/bc33e_98a23_aee55c81a8807a2308fe868a1b19e76b.key';
 
         CLI::write("Memeriksa file sertifikat: " . $certificatePath);
@@ -59,7 +60,7 @@ class StartWebSocket extends BaseCommand
             $tcpServer, // Menggunakan instance SocketServer yang sudah dibuat
             $loop,
             [
-                'local_cert' => $certificatePath, // GANTI DENGAN PATH SEBENARNYA
+                'local_cert' => $combinedCertificatePath, // GANTI DENGAN PATH SEBENARNYA
                 'local_pk' => $privateKeyPath,     // GANTI DENGAN PATH SEBENARNYA
                 // 'passphrase' => 'jika_private_key_memiliki_passphrase', // HAPUS JIKA TIDAK ADA
                 'allow_self_signed' => false, // HANYA UNTUK PENGEMBANGAN, JANGAN GUNAKAN DI PRODUKSI
